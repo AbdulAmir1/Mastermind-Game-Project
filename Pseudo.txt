@@ -1,0 +1,22 @@
+-- Main Logic
+* The main goal is to guess the right 4-colors pattern that was set by your oponnent and win your turn.
+
+How to do the Mastermind game:
+-- Program Logic
+1- player 1 make a 4-color pattern (eg. use an array of length = 4)
+2- player 2 start to guess : (eg. gives an array of length = 4) 
+3- the program compares the two arrys for the following:
+  * the number of matching colors
+  * the number of non-matching colors
+  * update the scores list
+4- when player 2 guess the right pattern he wins
+5- the scores list is evaluated to calculate player 2 scores
+
+-- Ui Logic
+1- Using DOM, draw the Mastermind board
+2- display a message to player 1 to make the 4-color pattern
+3- when player 1 done,  display a message to player 2 to start guessing   by using the mouse to select positions and colors to make his guess.
+4- when player 2 done, update the game board showing how many positions and colors are guessed correctly.
+5- If player 2 found the right pattern, display a message
+6- If player 2 failed to find the right pattern in less than 12 trials, display GAME OVER message. 
+
