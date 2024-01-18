@@ -4,6 +4,10 @@
 
 An online [Mastermind](<https://en.wikipedia.org/wiki/Mastermind_(board_game)>) game.
 
+## Wireframes
+
+[Project WF](https://drive.google.com/file/d/1yfIKqCnkdzodZbOoAWQlaVri5tLzqK2P/view)
+
 ### _How to Play_
 
 - Select Start
