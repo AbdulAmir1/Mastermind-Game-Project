@@ -11,9 +11,9 @@ An online [Mastermind](<https://en.wikipedia.org/wiki/Mastermind_(board_game)>) 
 ### _How to Play_
 
 - Select Start
-- Follow the insructions to play against the computer
+- Follow the instructions to play against the computer
 
 ## Acknowledgments
 
-- [Payne Fulcher](pfulcher26@gmail.com)
-- [Mastermind Game Explained](https://www.youtube.com/watch?v=Dn0iqlY5tMU&ab_channel=GatherTogetherGames)
+- [Payne Fulcher](<pfulcher26@gmail.com>)
+- [Mastermind Game Explained](<https://www.youtube.com/watch?v=Dn0iqlY5tMU&ab_channel=GatherTogetherGames>)
