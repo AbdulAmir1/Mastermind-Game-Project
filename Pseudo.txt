@@ -5,7 +5,7 @@ How to do the Mastermind game:
 -- Program Logic
 1- player 1 make a 4-color pattern (eg. use an array of length = 4)
 2- player 2 start to guess : (eg. gives an array of length = 4) 
-3- the program compares the two arrys for the following:
+3- the program compares the two arrays for the following:
   * the number of matching colors
   * the number of non-matching colors
   * update the scores list

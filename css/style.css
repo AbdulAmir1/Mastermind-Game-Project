@@ -1,0 +1,13 @@
+h1 {
+  width: 100px;
+  margin: 30px auto;
+}
+
+.button {
+  display: block;
+  width: 100px;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #fff;
+  background-color: black;
+}
