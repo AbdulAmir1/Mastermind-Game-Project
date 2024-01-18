@@ -1,13 +1,15 @@
 h1 {
-  width: 100px;
+  width: 240px;
   margin: 30px auto;
 }
 
 .button {
   display: block;
   width: 100px;
+  margin: 10px auto;
   padding: 5px 0;
   text-decoration: none;
+  text-align: center;
   color: #fff;
   background-color: black;
 }
