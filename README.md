@@ -15,5 +15,5 @@ An online [Mastermind](<https://en.wikipedia.org/wiki/Mastermind_(board_game)>) 
 
 ## Acknowledgments
 
-- [Payne Fulcher](<pfulcher26@gmail.com>)
+- [Payne Fulcher](mailto:pfulcher26@gmail.com)
 - [Mastermind Game Explained](<https://www.youtube.com/watch?v=Dn0iqlY5tMU&ab_channel=GatherTogetherGames>)
