@@ -23,36 +23,15 @@ const compareP1CodeToP2Guess = (p2Guess) => {
 }
 
 const evaluatePlayerGuessPattern = (player2Guess) => {
+  let player2GuessedRight
   if (compareP1CodeToP2Guess(player2Guess)) {
-    return true
+    player2GuessedRight = true
   } else {
-    return false
+    player2GuessedRight = false
   }
+
+  updateGameboardUIDOM(player2GuessedRight, player2Guess)
+  return player2GuessedRight
 }
 
-const updateGameboardUIDOM = () => {}
-
-const test = () => {
-  console.assert(
-    evaluatePlayerGuessPattern([
-      'colorName1',
-      'colorName2',
-      'colorName3',
-      'colorName4'
-    ]),
-    'evaluatePlayerGuessPattern() can evaluate the player2 guess 1'
-  )
-
-  console.assert(
-    evaluatePlayerGuessPattern([
-      'colorName1',
-      'colorName2',
-      'colorName',
-      'colorName4'
-    ]) === false,
-    'evaluatePlayerGuessPattern() can evaluate the player2 guess 2'
-  )
-}
-
-console.log('testing...')
-test()
+const updateGameboardUIDOM = (player2GuessedRight, player2Guess) => {}

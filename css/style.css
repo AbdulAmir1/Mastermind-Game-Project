@@ -13,3 +13,77 @@ h1 {
   color: #fff;
   background-color: black;
 }
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: calc(100vh - 100px);
+  margin: 15px auto;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000;
+}
+
+.player1-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 70%;
+  height: 40px;
+  background-color: aqua;
+}
+
+.player2-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 90%;
+  height: 40px;
+  background-color: #eee;
+}
+
+.player2-color-holes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 90%;
+  height: 40px;
+  background-color: yellow;
+}
+
+div[title] {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.player2-result {
+  display: flex;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: blue;
+}
+
+.player2-result-hole {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.players {
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
