@@ -1,10 +1,5 @@
 const NUMBER_OF_HOLES = 4
-let player1CodePattern = [
-  'colorName1',
-  'colorName2',
-  'colorName3',
-  'colorName4'
-]
+let player1CodePattern = ['red', 'blue', 'yellow', 'green']
 
 const compareP1CodeToP2Guess = (p2Guess) => {
   let i = 0
