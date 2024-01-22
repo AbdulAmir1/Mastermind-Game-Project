@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/game-baord.css">
   <script defer src="js/gameBoard.js"></script>
   <script defer src="http://127.0.0.1:5500/js/script.js"></script>
-  <script defer src="http://127.0.0.1:5500/js/Tests/tests.js"></script>
+  <!-- <script defer src="http://127.0.0.1:5500/js/Tests/tests.js"></script> -->
   <title>Mastermind</title>
 </head>
 <body>
@@ -16,30 +16,30 @@
   <div class="game-board">
     
     <div class="player1-section">
-      <div title="circle1"></div>
+      <div title="circle1I"></div>
       <div title="circle2"></div>
       <div title="circle3"></div>
       <div title="circle4"></div>
     </div>
     
     <div class="player2-section">
-      <div class="player2-result">
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
+      <div class="player-result">
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
       </div>
       <div class="player2-color-holes">
-        <div title="circle1"></div>
-        <div title="circle2"></div>
-        <div title="circle3"></div>
-        <div title="circle4"></div>
+        <div title></div>
+        <div title></div>
+        <div title></div>
+        <div title></div>
       </div>
-      <div class="player2-result">
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
-        <div class="player2-result-hole"></div>
+      <div class="player-result">
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
+        <div class="player-result-hole"></div>
       </div>
     </div>
   </div>
@@ -49,11 +49,20 @@
     </div>
   </dialog>
 
-  <dialog class="submit-player2-answer" open>
+  <dialog class="submit-player2-answer">
     <div>
       <button class="ok">Ok</button>
       <button class="cancel">Cancel</button>
     </div>
   </dialog>
+
+  <dialog class="display-message-dialog">
+    <div class="title"></div>
+    <div class="message">
+      NOTHING
+    </div>
+  </dialog>
+
+  <dialog>Test Dialog</dialog>
 </body>
 </html>
