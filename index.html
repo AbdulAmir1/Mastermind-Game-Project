@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script1.js"></script>
   <title>Mastermind Game</title>
 </head>
 <body>
   <h1>The Mastermind</h1>
-  <a class="button" href="http://127.0.0.1:5500/main.html">Start Playing</a>
+  <a class="button"  id="startGameButton">Start Playing</a>
+  <dialog id="userNameDialog">
+    <label for="player"></label><input type="text" placeholder="Your Name" id="player">
+    <button id="okButton">Ok</button>
+  </dialog>
 </body>
 </html>
