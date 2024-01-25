@@ -14,9 +14,10 @@
   <title>Mastermind</title>
 </head>
 <body>
+  <div class="timeBoard">Time</div>
   <h2 class="players">Player - 1</h2>
   <div class="game-board">
-    
+    <div class="codeSectionCovering"></div>
     <div class="player1-section">
       <div title="circle1I"></div>
       <div title="circle2"></div>
@@ -24,7 +25,7 @@
       <div title="circle4"></div>
     </div>
     <div class="player2-sections">
-      <div class="player2-section">
+      <!-- <div class="player2-section">
         <div class="player2-color-holes">
           <div title></div>
           <div title></div>
@@ -65,7 +66,7 @@
           <div class="player-result-hole" colorValue></div>
           <div class="player-result-hole" colorValue></div>
         </div>
-      </div>
+      </div> 
       <div class="player2-section">
         <div class="player2-color-holes">
           <div title></div>
@@ -93,7 +94,7 @@
           <div class="player-result-hole" colorValue></div>
           <div class="player-result-hole" colorValue></div>
         </div>
-      </div>
+      </div>-->
       <div class="player2-section">
         <div class="player2-color-holes">
           <div title></div>
@@ -139,7 +140,7 @@
     </div> 
     
   </div>
-  <h2 class="players">Player - 2</h2>
+  <h2 class="player2">Player - 2</h2>
   <dialog class="colors-dialog">
     <div class="colors-box">
     </div>
@@ -151,6 +152,15 @@
       <button class="cancel">Cancel</button>
     </div>
   </dialog>
+
+  <dialog class="restart" open>
+    <div>Restart</div>
+    <div>
+      <button class="ok">Ok</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </dialog>
+
 
   <dialog class="display-message-dialog">
     <div class="title"></div>

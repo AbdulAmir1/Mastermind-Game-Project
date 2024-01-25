@@ -1,5 +1,5 @@
 const NUMBER_OF_HOLES = 4
-const allColors = ['red', 'blue', 'yellow', 'green', 'cyan', 'pink', '#ffdc79']
+const allColors = ['red', 'blue', 'yellow', 'green', 'cyan', 'pink', 'orange']
 let player1CodePattern = ['red', 'blue', 'yellow', 'green']
 // let resultArray = []
 

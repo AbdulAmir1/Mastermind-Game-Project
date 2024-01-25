@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 h1 {
   width: 240px;
   margin: 30px auto;
@@ -12,4 +16,9 @@ h1 {
   text-align: center;
   color: #fff;
   background-color: black;
+}
+
+#okButton,
+.button {
+  cursor: pointer;
 }
