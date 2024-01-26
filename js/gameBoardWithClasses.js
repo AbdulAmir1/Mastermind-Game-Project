@@ -1,35 +1,19 @@
-// TODO: move allColors[] from script.js to MastermundGame class
 class MastermindGame {
-  test1() {
-    // this.codeBreaker.clearAllPlayer2Sections()
-
-    // this.codeMaker.createNewCode()
-    // this.codeBreaker.setClickEventFor(this.codeBreaker.nextPlayerSection)
-    // MastermindGame.codeCoveringBox.style.display = 'none'
-    // MastermindGame.endGame()
-    // MastermindGame.restartGame()
-    MastermindGame.codeCoveringBox.style.display = 'none'
-    console.log('Test Done!!')
-  }
-
-  test2() {
-    // this.codeBreaker.clearAllPlayer2Sections()
-
-    // this.codeMaker.createNewCode()
-    // this.codeBreaker.setClickEventFor(this.codeBreaker.nextPlayerSection)
-    // MastermindGame.codeCoveringBox.style.display = 'none'
-    // MastermindGame.endGame()
-    // MastermindGame.restartGame()
-    MastermindGame.codeCoveringBox.style.display = 'block'
-    console.log('Test Done!!')
-  }
-
   static timeBoard = document.querySelector('.timeBoard')
   static currentColorHole = null
   static colorPickerDialog = document.querySelector('dialog.colors-dialog')
   static submitPlayerPatternGuessDialog = document.querySelector(
     'dialog.submit-player2-answer'
   )
+  static allColors = [
+    'red',
+    'blue',
+    'yellow',
+    'green',
+    'cyan',
+    'pink',
+    'orange'
+  ]
   static codeCoveringBox = document.querySelector('.codeSectionCovering')
 
   static submitPlayerPatternGuessDialogOkButton =
@@ -88,14 +72,12 @@ class MastermindGame {
   }
 
   static endGameAfter() {
-    //console.log('this[value] :'.this)
     MastermindGame.timeBoard.innerText = 'Time Up'
     MastermindGame.endTime = 0
   }
 
   static hideCodeSection(hide) {
     if (hide) {
-      console.log('hiding..')
       MastermindGame.codeCoveringBox.style.display = 'block'
     } else {
       MastermindGame.codeCoveringBox.style.display = 'none'
@@ -110,7 +92,6 @@ class MastermindGame {
     MastermindGame.createColorPickerDialogCircles()
     MastermindGame.prepareColorsPickerDialog()
     MastermindGame.prepareSubmitDialogFunctions()
-    console.log('self in MastermindGame class is ::::', self)
     this.playerName = this.setPlayerName()
     MastermindGame.playerName = document.querySelector('h2.player2')
     MastermindGame.playerName.innerText = this.playerName
@@ -134,7 +115,6 @@ class MastermindGame {
   }
 
   static startNextTurn() {
-    //console.log('Starting next turn...')
     MastermindGame.roundNumber++
 
     if (
@@ -167,7 +147,7 @@ class MastermindGame {
   static createColorPickerDialogCircles() {
     const colorsBox =
       MastermindGame.colorPickerDialog.querySelector('div.colors-box')
-    allColors.forEach((color) => {
+    MastermindGame.allColors.forEach((color) => {
       const colorCircle = document.createElement('div')
       colorCircle.className = 'color-selection-circle'
       colorCircle.style.backgroundColor = color
@@ -237,11 +217,6 @@ class MastermindGame {
     let j = 0
     let colorMatch = true
     let resultArray = []
-
-    console.assert(
-      p2Guess.length === MastermindGame.NUMBER_OF_HOLES,
-      'p2Guess array length is correct'
-    )
 
     let obj = {}
     let colorComparisionResult = {}
@@ -370,8 +345,12 @@ class CodeMaker {
   setCodePattern() {
     this.parent.player1CodePattern = []
     for (let i = 0; i < 4; i++) {
-      const randomColorIndex = Math.floor(Math.random() * allColors.length)
-      this.parent.player1CodePattern.push(allColors[randomColorIndex])
+      const randomColorIndex = Math.floor(
+        Math.random() * MastermindGame.allColors.length
+      )
+      this.parent.player1CodePattern.push(
+        MastermindGame.allColors[randomColorIndex]
+      )
     }
 
     MastermindGame.codeMakerPattern = this.parent.player1CodePattern
@@ -421,10 +400,6 @@ class CodeBreaker {
   clickHandler(e) {
     self.pickColor(e)
     e = MastermindGame.currentColorHole
-  }
-
-  clickHandler2() {
-    // console.log('pickColor2 is ', this.pickColor)
   }
 
   setClickEventFor(player2Section) {
@@ -486,3 +461,5 @@ class CodeBreaker {
     }
   }
 }
+
+let game = new MastermindGame()

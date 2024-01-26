@@ -1,8 +1,9 @@
 document.querySelector('#startGameButton').addEventListener('click', () => {
-  console.log('starButton clicked.')
   userNameDialog.open = true
+  userNameDialog.style.animationPlayState = 'running'
 })
 
+const getPlayerNameDialog = document.querySelector('#userNameDialog')
 const userNameDialog = document.querySelector('#userNameDialog')
 const userNameInput = document.querySelector('#player')
 

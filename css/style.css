@@ -1,9 +1,25 @@
 body {
   position: relative;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 150px;
+  padding: 40px 55px;
+  border: 1.5px solid #000;
+  border-radius: 20px;
+  background: radial-gradient(transparent, black);
 }
 
 h1 {
-  width: 240px;
+  width: 185px;
+  font-weight: bold;
   margin: 30px auto;
 }
 
@@ -21,4 +37,28 @@ h1 {
 #okButton,
 .button {
   cursor: pointer;
+}
+
+#userNameDialog {
+  animation: slideDown 2s ease-in 0.3s 1 forwards;
+}
+
+@keyframes slideDown {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: 50%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 50%;
+  }
+
+  to {
+    top: -100px;
+  }
 }

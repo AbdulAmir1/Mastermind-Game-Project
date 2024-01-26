@@ -1,6 +1,5 @@
 .game-board {
   display: flex;
-  /* display: none; */
   position: absolute;
   left: 50%;
   top: 20px;
@@ -16,7 +15,6 @@
 }
 
 div.codeSectionCovering {
-  /* display: none; */
   position: absolute;
   width: 65%;
   height: 40px;
@@ -82,7 +80,6 @@ div[title] {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  /* background-color: yellow; */
 }
 
 .player-result-hole {
@@ -97,7 +94,6 @@ h2.payer2 {
   position: absolute;
   left: 50%;
   top: calc(100% - 150px);
-  /* bottom: 0px; */
   transform: translate(-50%, 0);
   margin: 0;
   text-align: center;
@@ -130,9 +126,7 @@ dialog.colors-dialog {
 }
 
 dialog.submit-player2-answer {
-  /* position: absolute; */
   width: 140px;
-  /* left: 20px; */
   top: 50%;
   transform: translateY(-50%);
   background-color: black;
@@ -158,15 +152,6 @@ dialog.display-message-dialog div.title {
   color: white;
   background-color: black;
 }
-
-/* dialog {
-  position: absolute;
-  left: 30%;
-  top: 50%;
-  width: 200px;
-  height: 150px;
-  transform: translate(-50%, -30%);
-} */
 
 dialog.restart div {
   width: 100%;
