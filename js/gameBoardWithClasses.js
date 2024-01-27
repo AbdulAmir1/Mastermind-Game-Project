@@ -1,5 +1,7 @@
+// Main class : the game functioalities including starting, ending a game and checking for a winner. The player info.
+// and a set of methods to handle UI dynamic updates.
+
 class MastermindGame {
-  static timeBoard = document.querySelector('.timeBoard')
   static currentColorHole = null
   static colorPickerDialog = document.querySelector('dialog.colors-dialog')
   static submitPlayerPatternGuessDialog = document.querySelector(
@@ -23,18 +25,27 @@ class MastermindGame {
     'dialog.display-message-dialog'
   )
 
+  // Number of colors of a color pattern to guess and win the game
   static NUMBER_OF_HOLES = 4
+
+  // UI DOM Elements
   static codeMakerPattern = null
   static player2Section = null
   static player2Sections = null
   static player2SectionResultHoles = null
+
+  // variable to keep track of the number of the remaining rounds to play
   static roundNumber = 0
+
+  // CodeBreaker class object (see below)
   static myCodeBreaker = null
+
+  // CodeMaker class object (see below)
   static myCodeMaker = null
+
+  // player name initial value
   static playerName = 'Unknown'
-  static timer = 5000
   static endTime = 0
-  static mainTimeOut = null
 
   constructor() {
     this.gameLevel = 1
@@ -44,21 +55,18 @@ class MastermindGame {
     this.player1CodePattern = []
     this.nextTurn = 0
     this.roundNumber = 0
-    // MastermindGame.timeBoard.innerText = `Time: ${MastermindGame.timer}`
     this.startGame()
   }
 
+  // a method to start the game and set the object initial values
   startGame() {
     this.initializeVariables()
     this.codeMaker.createNewCode()
     MastermindGame.hideCodeSection(true)
     this.codeBreaker.setClickEventFor(this.codeBreaker.nextPlayerSection)
-    /* MastermindGame.mainTimeOut = setTimeout(
-      MastermindGame.endGameAfter,
-      MastermindGame.timer
-    ) */
   }
 
+  // a method to enable the player to replay the game
   static restartGame() {
     MastermindGame.myCodeBreaker.clearAllPlayer2Sections()
     this.myCodeMaker.createNewCode()
@@ -71,11 +79,7 @@ class MastermindGame {
     MastermindGame.myCodeBreaker.setClickEventFor(MastermindGame.player2Section)
   }
 
-  static endGameAfter() {
-    MastermindGame.timeBoard.innerText = 'Time Up'
-    MastermindGame.endTime = 0
-  }
-
+  // method to handle the UI DOM
   static hideCodeSection(hide) {
     if (hide) {
       MastermindGame.codeCoveringBox.style.display = 'block'
@@ -84,6 +88,7 @@ class MastermindGame {
     }
   }
 
+  // method to initialize the game variables
   initializeVariables() {
     this.codeMaker = new CodeMaker(this)
     this.codeBreaker = new CodeBreaker(this)
@@ -97,16 +102,21 @@ class MastermindGame {
     MastermindGame.playerName.innerText = this.playerName
   }
 
+  // method to handle the UI DOM
   setPlayerName = () => {
     return localStorage.getItem('playerName')
   }
 
-  static endGame = () => {
+  // method to update the UI DOM when the game ends
+  static endGame = (userWins) => {
     MastermindGame.myCodeBreaker.disableClickEventFor(
       MastermindGame.player2Section
     )
 
-    MastermindGame.displayMessage('GAME OVER')
+    if (!userWins) {
+      MastermindGame.displayMessage('GAME OVER')
+    }
+
     setTimeout(() => {
       MastermindGame.displayMessageDialog.open = false
     }, 1100)
@@ -114,6 +124,7 @@ class MastermindGame {
     MastermindGame.hideCodeSection(false)
   }
 
+  // method to update the UI DOM for playing next turn
   static startNextTurn() {
     MastermindGame.roundNumber++
 
@@ -139,11 +150,13 @@ class MastermindGame {
     MastermindGame.myCodeBreaker.setClickEventFor(MastermindGame.player2Section)
   }
 
+  // method to update the UI DOM
   static setNextPlayerSectionResultHoles() {
     MastermindGame.player2SectionResultHoles =
       MastermindGame.player2Section.querySelectorAll('div.player-result-hole')
   }
 
+  // Make the color Mastermind game picker
   static createColorPickerDialogCircles() {
     const colorsBox =
       MastermindGame.colorPickerDialog.querySelector('div.colors-box')
@@ -156,16 +169,19 @@ class MastermindGame {
     })
   }
 
+  // method to check UI DOM
   static colorHoleNotEmpty(colorHoleDiv) {
     return colorHoleDiv.getAttribute('title') !== ''
   }
 
+  // method to display a dialog
   static displayMessage(message) {
     MastermindGame.displayMessageDialog.querySelector('.message').innerText =
       message
     MastermindGame.displayMessageDialog.open = true
   }
 
+  // method to check the UI DOM
   static isAllPlayer2HolesFilled(divsList) {
     for (let i = 0; i < divsList.length; i++) {
       // 'hole #', i, ' color  =>', divsList[i].getAttribute('title')
@@ -177,6 +193,7 @@ class MastermindGame {
     return true
   }
 
+  // method to check the UI DOM
   static setSelectedHoleColor(colorHole, color) {
     //('setting color to ', color)
     colorHole.style.backgroundColor = color
@@ -191,6 +208,7 @@ class MastermindGame {
     // ('All color holes selected ? ===> ', player2SelectedAllColorHoles)
   }
 
+  // method to update the UI DOM
   static prepareColorsPickerDialog() {
     const allColorsDialiogColorCircles =
       MastermindGame.colorPickerDialog.querySelectorAll(
@@ -199,9 +217,6 @@ class MastermindGame {
 
     allColorsDialiogColorCircles.forEach((circleDiv) => {
       circleDiv.addEventListener('click', (e) => {
-        // alert('color selected ok.')
-
-        // ;('ok u select color circle on color dialog')
         const pickedColor = e.target.getAttribute('color-name')
         MastermindGame.currentColorHole.target.style.borderWidth = '1px'
         MastermindGame.setSelectedHoleColor(
@@ -213,6 +228,7 @@ class MastermindGame {
     })
   }
 
+  // method to do color holes comparision in Mastermin game
   static compareP1CodeToP2Guess = (p2Guess) => {
     let j = 0
     let colorMatch = true
@@ -243,12 +259,8 @@ class MastermindGame {
     return { playerWin: false, roundGuessResult: resultArray }
   }
 
+  // method to update the UI DOM
   static addColorToResultSectionCircle(isItMatchColor, matchingColor) {
-    // TODO : add black or white circle
-    // let nextColorDiv = player2ResultDivs[0]
-    // 'player2ResultDivs is ====> ', player2ResultDivs
-    // return
-
     let i = 0
     while (
       MastermindGame.player2SectionResultHoles[i].getAttribute('colorValue') !==
@@ -266,25 +278,24 @@ class MastermindGame {
     )
   }
 
+  // method to update the UI DOM
   static fillPlayer2GuessResultColorHoles(player2GuessResultArray) {
-    // 'filling result holes...', player2GuessResultArray
     player2GuessResultArray.forEach((colorComparisionResult) => {
       if (colorComparisionResult.value === 2) {
         MastermindGame.addColorToResultSectionCircle(
           true,
           colorComparisionResult.color
         )
-      } // else if (value === 1) {
-      //   MastermindGame.addColorToResultSectionCircle(false)
-      // }
+      }
     })
   }
 
+  // method to update the UI DOM
   static updateGameboardUIDOM(player2GuessResultArray) {
-    // displayResultInConsole()
     MastermindGame.fillPlayer2GuessResultColorHoles(player2GuessResultArray)
   }
 
+  // method to check player guessed color pattern in Mastermind game
   static evaluatePlayerGuessPattern = (player2Guess) => {
     let player2GuessedRight
     const roundResult = MastermindGame.compareP1CodeToP2Guess(player2Guess)
@@ -299,12 +310,11 @@ class MastermindGame {
     return player2GuessedRight
   }
 
+  // method to add event handles for a UI DOM to check if a player won the game
   static prepareSubmitDialogFunctions() {
     MastermindGame.submitPlayerPatternGuessDialogOkButton.addEventListener(
       'click',
       () => {
-        // TODO : build the player2 guess array and call evaluatePlayerGuessPattern() method
-
         const playerPatternGuess = []
         const player2ColorCircles =
           MastermindGame.player2Section.querySelectorAll(
@@ -312,30 +322,23 @@ class MastermindGame {
           )
 
         player2ColorCircles.forEach((colorHoleDiv) => {
-          // ('player2 selected', playerPatternGuess)
           playerPatternGuess.push(colorHoleDiv.getAttribute('title'))
         })
 
-        // ('player2 selected', playerPatternGuess)
         if (MastermindGame.evaluatePlayerGuessPattern(playerPatternGuess)) {
-          //;('YOU WIN ----- ')
           MastermindGame.displayMessage('YOU WIN')
+          MastermindGame.codeCoveringBox.style.display = 'none'
         } else {
-          //;('YOU LOSE ----- ')
           MastermindGame.displayMessage('YOU LOSE')
-          setTimeout(() => {
-            MastermindGame.displayMessageDialog.open = false
-            MastermindGame.startNextTurn()
-          }, 1500)
         }
 
-        //clearPlayer2SelectedPattern(player2ColorHoles)
         MastermindGame.submitPlayerPatternGuessDialog.open = false
       }
     )
   }
 }
 
+// class to set the secret color pattern in Mastermind game
 class CodeMaker {
   constructor(gameParent) {
     this.parent = gameParent
@@ -366,6 +369,7 @@ class CodeMaker {
   }
 }
 
+// class CodeBreaker is used to handle player actions. This inclues UI DOM dynamic update.
 class CodeBreaker {
   static player2Section
   constructor(parentGame) {
@@ -389,19 +393,20 @@ class CodeBreaker {
     MastermindGame.player2SectionResultHoles = this.nextPlayerSectionResultHoles
   }
 
+  // method to update the UI DOM
   pickColor(e) {
-    // alert('Color select dialog openning...')
-    // 'e in pickColor() is : ', e
     MastermindGame.colorPickerDialog.open = true
     MastermindGame.currentColorHole = e
     e.target.style.borderWidth = '3px'
   }
 
+  // method to handle user color selection
   clickHandler(e) {
     self.pickColor(e)
     e = MastermindGame.currentColorHole
   }
 
+  // method to set click events for UI DOM
   setClickEventFor(player2Section) {
     const allColorCircles = player2Section.querySelectorAll(
       '.player2-color-holes div[title]'
@@ -412,6 +417,7 @@ class CodeBreaker {
     })
   }
 
+  // method to remove click event handlers for UI DOM
   disableClickEventFor(player2Section) {
     const allColorCircles = player2Section.querySelectorAll(
       '.player2-color-holes div[title]'
@@ -422,6 +428,7 @@ class CodeBreaker {
     })
   }
 
+  // method to update UI DOM
   clearAllPlayer2Sections() {
     this.player2Sections.forEach((player2Section) => {
       this.clearAllTitleAttribute(player2Section, '')
@@ -431,6 +438,7 @@ class CodeBreaker {
     })
   }
 
+  // method to update UI DOM
   clearAllResutCircles() {
     const player2SectionsResultHoles = document.querySelectorAll(
       'div.player-result-hole'
@@ -441,6 +449,7 @@ class CodeBreaker {
     })
   }
 
+  // method to update UI DOM
   clearAllTitleAttribute(player2SectionDiv, value) {
     const allColors = player2SectionDiv.querySelectorAll(
       'div.player2-color-holes div'
@@ -451,6 +460,7 @@ class CodeBreaker {
     })
   }
 
+  // method to update UI DOM
   removeSelectedColors(player2SectionDiv) {
     const allColors = player2SectionDiv.querySelectorAll(
       'div.player2-color-holes div'
@@ -462,4 +472,5 @@ class CodeBreaker {
   }
 }
 
+// Starting the game by creating a new  Mastermind game class object
 let game = new MastermindGame()
