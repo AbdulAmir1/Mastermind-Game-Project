@@ -1,3 +1,4 @@
+// methods to update UI DOM
 document.querySelector('#startGameButton').addEventListener('click', () => {
   userNameDialog.open = true
   userNameDialog.style.animationPlayState = 'running'
@@ -11,6 +12,8 @@ document.querySelector('#okButton').addEventListener('click', () => {
   setPlayerName(userNameInput.value)
   location.href = 'main.html'
   console.log('Your name ==', userNameInput.value)
+  userNameDialog.style.animationName = 'slideUp'
+  userNameDialog.style.animationPlayState = 'running'
   userNameDialog.open = false
 })
 

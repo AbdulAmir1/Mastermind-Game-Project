@@ -25,6 +25,13 @@ Mastermind game on [wikipedia](<https://en.wikipedia.org/wiki/Mastermind_(board_
 
 Online project [link](http://amir-mayyad.surge.sh).
 
+## How Does the javascript Code Work
+
+- The code starts by creating a Mastermind class object in 'gameBoardWithClasses.js'
+- This will create a CodeMaker and a CodeBreaker classes.
+- The CodeMaker can be used new to generate a new color code, and the secret code is hidden from the players eyes to make start
+  guessing the right answer.
+
 ## Acknowledgments
 
 - [Payne Fulcher](mailto:pfulcher26@gmail.com)
