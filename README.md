@@ -29,8 +29,45 @@ Online project [link](http://amir-mayyad.surge.sh).
 
 - The code starts by creating a Mastermind class object in 'gameBoardWithClasses.js'
 - This will create a CodeMaker and a CodeBreaker classes.
-- The CodeMaker can be used new to generate a new color code, and the secret code is hidden from the players eyes to make start
+- The CodeMaker can be used to generate a new color code, and the secret code is hidden from the players eyes to make him start
   guessing the right answer.
+
+  ```
+    startGame() {
+      this.initializeVariables()
+      this.codeMaker.createNewCode()
+      MastermindGame.hideCodeSection(true)
+      this.codeBreaker.setClickEventFor(this.codeBreaker.nextPlayerSection)
+    }
+  ```
+
+- To check if a player guessed the color pattern correctly, compare the hidden secret code (an array) with player guess (another array).
+
+```
+MastermindGame.submitPlayerPatternGuessDialogOkButton.addEventListener(
+      'click',
+      () => {
+        const playerPatternGuess = []
+        const player2ColorCircles =
+          MastermindGame.player2Section.querySelectorAll(
+            'div.player2-color-holes div[title]'
+          )
+
+        player2ColorCircles.forEach((colorHoleDiv) => {
+          playerPatternGuess.push(colorHoleDiv.getAttribute('title'))
+        })
+
+        if (MastermindGame.evaluatePlayerGuessPattern(playerPatternGuess)) {
+          MastermindGame.displayMessage('YOU WIN')
+          MastermindGame.codeCoveringBox.style.display = 'none'
+        } else {
+          MastermindGame.displayMessage('YOU LOSE')
+        }
+
+        MastermindGame.submitPlayerPatternGuessDialog.open = false
+      }
+    )
+```
 
 ## Acknowledgments
 
